@@ -1,4 +1,6 @@
 type Mahasiswa = {
     nama : string,
-    nim : string,
+    email : string,
+    foto : string,
+    phone : string,
 }
