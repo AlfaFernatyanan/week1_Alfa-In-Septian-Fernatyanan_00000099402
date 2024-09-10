@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {View, ScrollView, StyleSheet} from "react-native"
+import {View, ScrollView, StyleSheet, ActivityIndicator} from "react-native"
 import MahasiswaListItem from "@/components/MahasiswaListItem";
 
 export default function HomeScreen() {
@@ -26,14 +26,16 @@ export default function HomeScreen() {
         <ScrollView>
             <View style={styles.container}>
                 {
-                    dataMahasiswa.map((item) => (
-                        <MahasiswaListItem
-                            nama={item.name.first}
-                            phone={item.phone}
-                            email={item.email}
-                            foto={item.picture.thumbnail}
-                        />
-                    ))
+                    loading
+                        ? <ActivityIndicator/>
+                        : dataMahasiswa.map((item) => (
+                            <MahasiswaListItem
+                                nama={item.name.first}
+                                phone={item.phone}
+                                email={item.email}
+                                foto={item.picture.thumbnail}
+                            />
+                        ))
                 }
             </View>
         </ScrollView>
@@ -42,7 +44,6 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        height: 250
+        height: 250,
     }
 })
-
